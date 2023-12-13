@@ -187,58 +187,6 @@ class DataBaseCreator():
         docs = self.knowledge_base.similarity_search(user_input)
         return docs
     
-# class BotBackend():
-#     def __init__(self, file_path_clusterer):
-#         self.filenames = []
-#         self.response = "I'm an LLM chat bot"
-#         self.history = {"history": [{"role": "user", "content": "Hello, how are you?"},{"role": "assistant", "content": "I'm fine, thank you!"}]}
-#         self.file_path_clusterer = file_path_clusterer
-   
-#     async def process_filenames(self, filenames: FilePaths) -> dict:
-#         self.filenames = filenames.filenames
-#         clustered_file_paths = self.file_path_clusterer.cluster_files_by_extension(self.filenames)
-        
-#        # if self.filenames and all(isinstance(item, str) for item in self.filenames):
-#         return {
-#             "filenames": clustered_file_paths,
-#             "status": "ok"
-#         }
-#         # else:
-#         #     return {
-#         #         "status": "error: invalid input, expecting a non-empty list of strings"
-#         #     }
-#     async def llm_response(self, history: ConversationHistory) -> dict:
-#         # Step 0: Receive the API payload as a dictionary
-#         self.history = history.dict()
-
-#         # Step 1: Initialize messages with a system prompt and conversation history
-#         #messages = [{"role": "system", "content": system_prompt}, *history["history"]]
-#         #template = f"""
-#         # generate a small concise story with about 30 words and in German
-#         # CONTENT: {scenario}
-#         # STORY:
-#         # """
-#         #prompt = PromptTemplate(template=template, input_variables=["scenario"])
-#         #chat = ChatOpenAI(temperature=0, openai_api_key=openai.api_key)
-#         # messages_lanchain = [
-#         # SystemMessage(
-#         #     content="You are a helpful assistant that tells stories about image captions."
-#         # ),
-#         # HumanMessage(
-#         #     content=system_prompt
-#         # ),
-#         # ]
-#         self.llm_response = "it worked"# chat(messages)
-#         # Step 2: Generate a response
-#         # llm_response = openai.ChatCompletion.create(
-#         #     model="gpt-3.5-turbo", messages=messages
-#         # )
-
-#         # Step 3: Return the generated response and the token usage
-#         #*history["history"]
-#         return {'response': self.llm_response,
-#                 'history': self.history
-#                }
 
 file_path_clusterer = FilePathsModifier()
 llm = OpenAI()
@@ -322,23 +270,5 @@ async def file_paths(filenames: FilePaths)-> dict:
     }
     
     
-    # if isinstance(filename_list, list) and all(isinstance(item, str) for item in filename_list):
-    #     return {
-    #         "filenames": filename_list,
-    #         "status": "ok"
-    #     }
-    # else:
-    #     return {
-    #         "status": "error: invalid input, expecting a non-empty list of strings"
-    #     }
 
-
-
-# @app.get("/paths")
-# async def file_paths(filenames: FilePaths, chatbot: BotBackend = Depends(file_path_clusterer)):
-#     return await chatbot.process_filenames(filenames)
-
-# @app.post("/chat")
-# async def llm_response(history: ConversationHistory, chatbot: BotBackend = Depends()):
-#     return await chatbot.llm_response(history)
 
