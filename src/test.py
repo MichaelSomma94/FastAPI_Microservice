@@ -51,7 +51,7 @@ from langchain.document_loaders import TextLoader
 from pydantic import BaseModel, Field
 from typing import List
 
-load_dotenv("/Users/michiundslavki/Dropbox/Deloitte/E_Control/Archive/chat-with-documents-langchain/Microservice_Chat_bot/.env")
+#load_dotenv("/Users/michiundslavki/Dropbox/Deloitte/E_Control/Archive/chat-with-documents-langchain/Microservice_Chat_bot/.env")
 
 # Load your API key from an environment variable or secret management service
 openai.api_key = os.getenv("OPENAI_API_KEY")
